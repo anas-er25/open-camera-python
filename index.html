@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Example</title>
+</head>
+<body>
+  <video id="video" width="640" height="480" autoplay></video>
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        var video = document.querySelector('video');
+        video.srcObject = stream;
+        video.onloadedmetadata = function(e) {
+          video.play();
+        };
+      })
+      .catch(function(err) {
+        console.log("Error: " + err);
+      });
+  </script>
+</body>
+</html>
